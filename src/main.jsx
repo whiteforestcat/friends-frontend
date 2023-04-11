@@ -20,17 +20,19 @@ import { PersistGate } from "redux-persist/integration/react";
 // remember to delete local storage, user will have to clear cache
 
 const persistConfig = { key: "root", storage, version: 1 };
-const persistReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
-  reducer: persistReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) => {
-    getDefaultMiddleware({
+    return getDefaultMiddleware({
       serializableCheck: {
-        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // to ignore this warnings
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // to ignore this warnings
       },
     });
   },
 });
+
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

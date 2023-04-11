@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/system";
+import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 
 function App() {
