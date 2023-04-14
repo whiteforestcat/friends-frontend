@@ -15,7 +15,9 @@ export const authSlice = createSlice({
     // functions
     setMode: (state) => {
       // refer to video if have error
-      state.mode === "light" ? "dark" : "light"; // if light mode, setMode will chaneg to dark mode. vice versa
+      state.mode = state.mode === "light" ? "dark" : "light"; // if light mode, setMode will chaneg to dark mode. vice versa
+      // note that this is a ternary operator where ( state.mode === "light" ?) is the condition
+      // so here is assigning state.mode to a ternary operator
     },
     setLogin: (state, action) => {
       // action.payload is user input in the funtion
