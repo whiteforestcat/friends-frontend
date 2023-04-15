@@ -39,8 +39,8 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  // const fullName = `${user.firstName} ${user.lastName}`;
-  const fullName = "hello";
+  const fullName = `${user.firstName} ${user.lastName}`;
+  // const fullName = "hello";
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -112,7 +112,7 @@ const Navbar = () => {
       {/* Mobile Nav */}
       {!isNonMobileScreens && isMobileMenuToggled && (
         <Box
-          position="fixeed"
+          position="fixed"
           right="0"
           bottom="0"
           height="100%s"
