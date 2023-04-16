@@ -24,7 +24,7 @@ const UserWidgets = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const res = await fetch(`http://localhost:3000/users/${userId}`, {
+    const res = await fetch(`http://localhost:5000/users/${userId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -38,11 +38,12 @@ const UserWidgets = ({ userId, picturePath }) => {
 
   useEffect(() => {
     getUser();
+    console.log("hello")
   }, []);
 
-  //   if (!user) {
-  //     return null
-  //   }
+    if (!user) {
+      return null
+    }
 
   const {
     firstName,

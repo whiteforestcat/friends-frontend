@@ -21,6 +21,11 @@ const HomePage = () => {
           <UserWidgets userId={_id} picturePath={picturePath} />
           {/* _id and picturePath here are taken from store */}
         </Box>
+        <Box
+          flexBasis={isNonMobileScreens ? "42%" : undefined}
+          mt={isNonMobileScreens ? undefined : "2rem"}
+        ></Box>
+        {isNonMobileScreens && <Box flexBasis="26%"></Box> }
       </Box>
     </Box>
   );
