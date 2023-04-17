@@ -66,7 +66,8 @@ const Form = () => {
       formData.append(value, values[value]);
       // note that values[value] is dynnamically accessing the value in values
       // so here is appending a <form> HTML element with both key-value pair of object values
-      // in <form> element, the input attributes' name is key and value is value
+      // in <form> element, the input attributes' name and value are updated
+      // so here, name is "value" throughout. note that name attribute can have duplicates, remember radio selected colour Willing Hearts
     }
     formData.append("picturePath", values.picture.name); // appending <form> HTML element with "picture" key and values.picture.name as value
     console.log(formData);
@@ -88,7 +89,7 @@ const Form = () => {
     const loggedInResponse = await fetch("http://localhost:5000/auth/login", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-type": "application/json", // only use this when sending raw data and not FormData()
       },
       body: JSON.stringify(values), // remember that values is already an object
     });
