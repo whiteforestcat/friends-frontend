@@ -39,6 +39,7 @@ export const authSlice = createSlice({
       }
     },
     setPosts: (state, action) => {
+      // ensure that payload input is an object format so that easier to deal with
       state.posts = action.payload.posts;
     },
     setPost: (state, action) => {
