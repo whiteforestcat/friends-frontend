@@ -21,10 +21,43 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const medium = palette.neutral.medium;
 
   // remember array.find is a callback function which returns a Boolean if input is true
-  const isFriend = friends.find((friend) => friend._id === friendId)
-  const patchFriend
+  const isFriend = friends.find((friend) => friend._id === friendId);
 
-  return <div></div>;
+  // as in Orange Mart in checking the stock count, need to pass adjust friend list when you delete the friend
+  const patchFriend = async () => {
+    const res = await fetch(`http://localhost:5000/users/${_id}/${friendId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    dispatch(setFriends({ friends: data }));
+  };
+
+  return (
+    <FlexBetween>
+      <FlexBetween gap="1rem">
+        {/* UserImage displays the small profile icon */}
+        <UserImage image={userPicturePath} size="55px" />
+        <Box
+          onClick={() => {
+            navigate(`/profile/${friendId}`); // when you click friend, will redirect you to his page
+            // navigate(0); // refreshes page after redirecting to friend profile page (prev line)
+          }}
+        >
+          <Typography color={main} fontWeight="500">
+            {name}
+            {/* // remember that name is fullname based on props */}
+          </Typography>
+          <Typography color={medium} fontSize="0.75rem">
+            {subtitle}
+          </Typography>
+        </Box>
+      </FlexBetween>
+    </FlexBetween>
+  );
 };
 
 export default Friend;
