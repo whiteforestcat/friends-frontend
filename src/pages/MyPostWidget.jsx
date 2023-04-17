@@ -3,7 +3,7 @@ import {
   EditOutlined,
   DeleteOutlined,
   AttachFileOutlined,
-  GiftBoxOutlined,
+  GifBoxOutlined,
   ImageOutlined,
   MicOutlined,
   MoreHorizOutlined,
@@ -50,7 +50,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picturePath", image.name); // image filepath
     }
 
-    const res = await fetch(`http:localhost/5000/posts`, {
+    const res = await fetch(`http://localhost:5000/posts`, {
       method: "POST",
       headers: {
         // "Content-type": "application/json"  // only use this when sending raw data, NOT FormData()
@@ -67,7 +67,9 @@ const MyPostWidget = ({ picturePath }) => {
   return (
     <WidgetWrapper>
       <FlexBetween gap="1.5rem">
+        {/* UserImage is the small user icon image  */}
         <UserImage image={picturePath} />
+        <p>{console.log("hello", picturePath)}</p>
         <InputBase
           placeholder="What's on your mind..."
           onChange={(e) => setPost(e.target.value)}
@@ -139,7 +141,7 @@ const MyPostWidget = ({ picturePath }) => {
         {isNonMobileScreens ? (
           <>
             <FlexBetween gap="0.25rem">
-              <GiftBoxOutlined sx={{ color: mediumMain }} />
+              <GifBoxOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Clip</Typography>
             </FlexBetween>
             <FlexBetween gap="0.25rem">
@@ -169,7 +171,9 @@ const MyPostWidget = ({ picturePath }) => {
             backgroundColor: palette.primary.main,
             borderRadius: "3rem",
           }}
-        ></Button>
+        >
+          POST
+        </Button>
       </FlexBetween>
     </WidgetWrapper>
   );
