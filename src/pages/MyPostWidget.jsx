@@ -3,7 +3,7 @@ import {
   EditOutlined,
   DeleteOutlined,
   AttachFileOutlined,
-  GiftBoxOutLined,
+  GiftBoxOutlined,
   ImageOutlined,
   MicOutlined,
   MoreHorizOutlined,
@@ -128,6 +128,49 @@ const MyPostWidget = ({ picturePath }) => {
           </Dropzone>
         </Box>
       )}
+
+      <Divider sx={{ margin: "1.25rem 0" }} />
+
+      <FlexBetween>
+        <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
+          <ImageOutlined sx={{ color: mediumMain }} />
+          <Typography color={mediumMain}>Image</Typography>
+        </FlexBetween>
+        {isNonMobileScreens ? (
+          <>
+            <FlexBetween gap="0.25rem">
+              <GiftBoxOutlined sx={{ color: mediumMain }} />
+              <Typography color={mediumMain}>Clip</Typography>
+            </FlexBetween>
+            <FlexBetween gap="0.25rem">
+              <AttachFileOutlined sx={{ color: mediumMain }} />
+              <Typography color={mediumMain}>Attachment</Typography>
+            </FlexBetween>
+            <FlexBetween gap="0.25rem">
+              <MicOutlined sx={{ color: mediumMain }} />
+              <Typography color={mediumMain}>Audio</Typography>
+            </FlexBetween>
+          </>
+        ) : (
+          <>
+            <FlexBetween gap="0.25rem">
+              <MoreHorizOutlined sx={{ color: mediumMain }} />
+            </FlexBetween>
+          </>
+        )}
+
+        {/* BUTTON */}
+
+        <Button
+          disabled={!post} // Button becomes disabled when post is empty
+          onClick={handlePost}
+          sx={{
+            color: palette.background.alt,
+            backgroundColor: palette.primary.main,
+            borderRadius: "3rem",
+          }}
+        ></Button>
+      </FlexBetween>
     </WidgetWrapper>
   );
 };
