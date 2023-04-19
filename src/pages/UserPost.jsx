@@ -5,7 +5,7 @@ import {
   FavoriteOutlined,
   ShareOutlined,
 } from "@mui/icons-material";
-import { Box, Divider, Typography, useTheme } from "@mui/material";
+import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
 import FlexBetween from "../components/FlexBetwen";
 import Friend from "../components/Friend";
 import WidgetWrapper from "../components/WidgetWrapper";
@@ -57,7 +57,74 @@ const UserPost = ({
     dispatch(setPost({ post: data })); // remember that setPost (in redux store) is to update a single post by user
   };
 
-  return <div></div>;
+  return (
+    <WidgetWrapper margin="2rem 0">
+      <Friend
+        friendId={postUserId}
+        name={name}
+        subtitle={location}
+        userPicturePath={userPicturePath}
+      />
+      <Typography color={main} sx={{ mt: "1rem" }}>
+        {description}
+      </Typography>
+      {picturePath && (
+        <img
+          width="100%"
+          height="auto"
+          alt="post"
+          style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
+          src={`http://localhost:5000/assets/${picturePath}`}
+        />
+      )}
+      {/* styling button */}
+      <FlexBetween mt="0.25rem">
+        <FlexBetween gap="1rem">
+          <FlexBetween gap="0.3rem">
+            {/* like button */}
+            <IconButton onClick={patchLike}>
+              {
+                // if post is liked, fav icon will have border outlined
+                isLiked ? (
+                  <FavoriteOutlined sx={{ color: primary }} />
+                ) : (
+                  <FavoriteBorderOutlined />
+                )
+              }
+            </IconButton>
+            <Typography>{likeCount}</Typography>
+          </FlexBetween>
+          {/* new comment box */}
+          <FlexBetween gap="0.3rem">
+            <IconButton onClick={() => setIsComment(!isComment)}>
+              <ChatBubbleOutlineOutlined />
+            </IconButton>
+            <Typography>{comments.length}</Typography>
+          </FlexBetween>
+        </FlexBetween>
+
+        <IconButton>
+          <ShareOutlined />
+        </IconButton>
+      </FlexBetween>
+      {/* all comments from everyone */}
+      {isComment && (
+        <Box mt="0.5rem">
+          {comments.map((comment, index) => {
+            return (
+              <Box key={index}>
+                <Divider />
+                <Typography sx={{ color: main, margin: "0.5rem", pl: "1rem" }}>
+                  {comment}
+                </Typography>
+              </Box>
+            );
+          })}
+          <Divider />
+        </Box>
+      )}
+    </WidgetWrapper>
+  );
 };
 
 export default UserPost;
