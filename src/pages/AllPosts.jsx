@@ -10,6 +10,7 @@ const AllPosts = ({ userId, isProfile = false }) => {
   const posts = useSelector((state) => state.posts);
   const token = useSelector((state) => state.token);
 
+  // user feed posts on homepage
   const getPosts = async () => {
     const res = await fetch(`http://localhost:5000/posts`, {
       method: "GET",
@@ -21,8 +22,10 @@ const AllPosts = ({ userId, isProfile = false }) => {
     dispatch(setPosts({ posts: data }));
   };
 
+  // user's posts when navigating to user's profile page
   const getUserPosts = async () => {
     const res = await fetch(`http://localhost:5000/posts/${userId}/posts`, {
+      // userId here is referring to the props
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -37,8 +40,10 @@ const AllPosts = ({ userId, isProfile = false }) => {
     // with this you can control whether to display feed or when user wants to post new thing
     if (isProfile) {
       getUserPosts();
+      console.log("getIserPosts() is here");
     } else {
       getPosts();
+      console.log("getPosts() is here");
     }
   }, []);
 

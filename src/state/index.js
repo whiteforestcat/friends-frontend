@@ -44,12 +44,13 @@ export const authSlice = createSlice({
     },
     setPost: (state, action) => {
       const updatedPosts = state.posts.map((post) => {
-        if (post._id === action.payload.post_id) {
+        if (post._id === action.payload.post._id) {
           // removes post which do not match
           return action.payload.post;
         }
-        state.posts = updatedPosts;
+        return post; // map ends here
       });
+      state.posts = updatedPosts;
     },
   },
 });

@@ -21,7 +21,13 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const medium = palette.neutral.medium;
 
   // remember array.find is a callback function which returns a Boolean if input is true
+  console.log(friends)
   const isFriend = friends.find((friend) => friend._id === friendId);
+//   friends.find()
+const isFriend2 =
+  friends.length && friends.length > 0
+    ? friends.find((friend) => friend._id === friendId)
+    : false;
 
   // as in Orange Mart in checking the stock count, need to pass adjust friend list when you delete the friend
   const patchFriend = async () => {

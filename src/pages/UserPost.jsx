@@ -41,8 +41,8 @@ const UserPost = ({
   const likeCount = Object.keys(likes).length; // Object.keys stores the keys of an object into an array
 
   const { palette } = useTheme();
-  const primaryLight = palette.primary.light;
-  const primaryDark = palette.primary.dark;
+  const main = palette.neutral.main;
+  const primary = palette.primary.main;
 
   const patchLike = async () => {
     const res = await fetch(`http://localhost:5000/posts/${postId}/like`, {
