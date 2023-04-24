@@ -138,7 +138,7 @@ const MyPostWidget = ({ picturePath }) => {
           <ImageOutlined sx={{ color: mediumMain }} />
           <Typography color={mediumMain}>Image</Typography>
         </FlexBetween>
-        {isNonMobileScreens ? (
+        {/* {isNonMobileScreens ? (
           <>
             <FlexBetween gap="0.25rem">
               <GifBoxOutlined sx={{ color: mediumMain }} />
@@ -159,7 +159,7 @@ const MyPostWidget = ({ picturePath }) => {
               <MoreHorizOutlined sx={{ color: mediumMain }} />
             </FlexBetween>
           </>
-        )}
+        )} */}
 
         {/* BUTTON */}
 

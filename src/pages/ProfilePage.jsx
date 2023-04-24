@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const getUser = async () => {
-    const res = await fetch(`http://localhost:5000/users${userId}`, {
+    const res = await fetch(`http://localhost:5000/users/${userId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ const ProfilePage = () => {
         justifyContent="center"
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
-          <UserWidgets userId={_id} picturePath={picturePath} />
+          <UserWidgets userId={userId} picturePath={user.picturePath} />
           {/* _id and picturePath here are taken from store */}
           <Box m="2rem 0" />
           {/* displaying own profile page */}
