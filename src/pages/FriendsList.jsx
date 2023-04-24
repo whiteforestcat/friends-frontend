@@ -15,7 +15,7 @@ const FriendsList = ({ userId }) => {
 
   const getFriends = async () => {
     // getting friends list of logged in user
-    const res = await fetch(`http://localhost:5000/user/${userId}/friends`, {
+    const res = await fetch(`http://localhost:5000/users/${userId}/friends`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -23,7 +23,7 @@ const FriendsList = ({ userId }) => {
     });
     const data = await res.json();
     console.log(data);
-    dispatch(setFriends(data));
+    dispatch(setFriends({friends: data}));
   };
 
   useEffect(() => {
