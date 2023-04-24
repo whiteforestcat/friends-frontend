@@ -50,7 +50,7 @@ const isFriend2 =
         <Box
           onClick={() => {
             navigate(`/profile/${friendId}`); // when you click friend, will redirect you to his page
-            // navigate(0); // refreshes page after redirecting to friend profile page (prev line)
+            navigate(0); // refreshes page after redirecting to friend profile page (prev line)
           }}
         >
           <Typography color={main} fontWeight="500">
