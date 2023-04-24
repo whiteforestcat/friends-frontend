@@ -6,6 +6,7 @@ import UserWidgets from "./UserWidgets";
 import MyPostWidget from "./MyPostWidget";
 import AllPosts from "./AllPosts";
 import Advertisement from "./Advertisement";
+import FriendsList from "./FriendsList";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -35,6 +36,7 @@ const HomePage = () => {
           <Box flexBasis="26%">
             <Advertisement />
             <Box m="2rem 0" />
+            <FriendsList userId={_id} />
           </Box>
         )}
       </Box>
