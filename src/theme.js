@@ -14,6 +14,7 @@ export const colorTokens = {
     800: "#1A1A1A",
     900: "#0A0A0A",
     1000: "#000000",
+    11000: "#ff9482",
   },
   primary: {
     50: "#E6FBFF",
@@ -21,7 +22,7 @@ export const colorTokens = {
     200: "#99EEFD",
     300: "#66E6FC",
     400: "#33DDFB",
-    500: "#00D5FA",
+    500: "#ffa500",
     600: "#00A0BC",
     700: "#006B7D",
     800: "#00353F",
@@ -52,6 +53,7 @@ export const themeSettings = (mode) => {
             background: {
               default: colorTokens.grey[900],
               alt: colorTokens.grey[800],
+              navbar: colorTokens.grey[11000],
             },
           }
         : {
